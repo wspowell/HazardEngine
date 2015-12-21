@@ -1,0 +1,25 @@
+
+#include "clock.h"
+
+Clock::Clock() : start(std::chrono::steady_clock::now()), current(start) {}
+Clock::~Clock() {}
+
+const std::chrono::steady_clock::time_point Clock::begin() const {
+	return this->start;
+}
+
+const std::chrono::steady_clock::time_point Clock::now() {
+	this->current = std::chrono::steady_clock::now();
+	return this->current;
+}
+
+const double Clock::elapsed() {
+	std::chrono::duration<double> time_span = duration_cast<std::chrono::duration<double>>(std::chrono::steady_clock::now() - this->start);
+	return time_span.count();
+}
+
+const double Clock::since(Clock &other) const {
+	std::chrono::duration<double> time_span = duration_cast<std::chrono::duration<double>>(other.start - this->start);
+	return time_span.count();
+}
+

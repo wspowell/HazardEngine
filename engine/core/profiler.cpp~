@@ -1,0 +1,11 @@
+
+#include <cstdio>
+#include "profile.h"
+
+Profiler::Profiler(const char* name) : name(name), clock(Clock()) { 
+	
+}
+
+Profiler::~Profiler() {
+	printf("%s %f\n", this->name, this->clock.elapsed());
+}

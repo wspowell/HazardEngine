@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "resourcemanager.h"
+#include "../resources/resourcemanager.h"
 
 class Initializer {
 	private:

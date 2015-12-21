@@ -1,5 +1,5 @@
 
-#include "init.h"
+#include "engine/engine.h"
 
 class Game {
 	private:
@@ -19,7 +19,7 @@ Game::Game() {
 	// do nothing
 }
 
-Game::Game() {
+Game::~Game() {
 	// do nothing
 }
 
@@ -36,12 +36,26 @@ bool Game::running() {
 }
 
 int main(void) {
+	PROFILE("MAIN");
+
+	Clock clock;
+
+	rng::seed(0);
+	logger::print("%d %d\n", rng::random(), rng::random());
+	logger::print("%d %d\n", rng::d20(), rng::d20());
+	logger::print("%d %d\n", rng::rd20(), rng::rd20());
+
+	logger::debug("test debug");
+
+	for(int i = 0; i < 1000000000; ++i) {}
+
+	logger::error("test error");
 
 	Game rpg;
 
 	rpg.init();
 
-	while (rpg.running()) {}
+	//while (rpg.running()) {}
 	
 	rpg.shutdown();
 
